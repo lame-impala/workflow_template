@@ -1,0 +1,8 @@
+.byebug_history
+.rspec
+.ruby-version
+.idea
+*.gem
+
+coverage/*
+tmp/*
