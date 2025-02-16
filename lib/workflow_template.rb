@@ -3,7 +3,7 @@
 require_relative 'workflow_template/workflow'
 
 module WorkflowTemplate
-  VERSION = '0.0.3'
+  VERSION = '0.0.4'
 
   def self.gem_version
     ::Gem::Version.new(VERSION)

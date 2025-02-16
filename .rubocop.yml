@@ -4,7 +4,7 @@ require:
 AllCops:
   NewCops: enable
 
-Style/Documentation:
+Gemspec/RequireMFA:
   Enabled: false
 
 Metrics/ClassLength:
@@ -38,9 +38,6 @@ Lint/ShadowingOuterLocalVariable:
 Layout/EndAlignment:
   EnforcedStyleAlignWith: start_of_line
 
-Style/ArgumentsForwarding:
-  Enabled: false
-
 RSpec/ContextWording:
   Enabled: false
 
@@ -55,3 +52,10 @@ RSpec/MultipleExpectations:
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+Style/ArgumentsForwarding:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
