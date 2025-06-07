@@ -17,6 +17,8 @@ module WorkflowTemplate
     attr_reader :value
 
     def value=(value)
+      return if value == self.value
+
       @saved = false
       @value = value
     end

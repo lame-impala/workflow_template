@@ -303,6 +303,29 @@ to identify the reason why the process was halted to facilitate special handling
 for such case. The outcome of the workflow will be a success
 unless some error is returned along with it.
 
+```ruby rspec halting_workflow
+class HaltingWorkflow < Workflow
+  apply :update
+  and_then :notify
+
+  def update(model:, value: nil)
+    return { halted: :no_change } if value.nil?
+
+    model.value = value
+    { model: model }
+  end
+
+  def notify(model:, **)
+    { message_id: Notification.notify(:updated, model) }
+  end
+
+  freeze
+end
+
+expect(HaltingWorkflow.impl.perform(model: TestModel.new(1).tap(&:save!)).to_result)
+  .to match({ model: have_attributes(value: 1), halted: :no_change })
+```
+
 ## Handling the outcome
 The outcome object holds the data resulting from the workflow
 execution. It has a `status` property set to `:ok` or `:error`
